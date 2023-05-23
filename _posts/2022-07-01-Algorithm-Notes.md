@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Notes - Algorithm
+author: GentleTomZerg
 tag: notes algorithm
 mathjax: true
 ---
