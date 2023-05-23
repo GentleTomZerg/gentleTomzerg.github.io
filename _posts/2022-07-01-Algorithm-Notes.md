@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Notes - Algorithm
+tag: notes, algorithm
 mathjax: true
 ---
 # Linked List
