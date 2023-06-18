@@ -83,6 +83,9 @@ designated by that term.
   terms and the **same predicate** may **differ from each other in quality or in
   quantity or in both**. Any such kind of differing has been traditionally called
   `opposition`.
+- Differ in quality: contraries & subcontraries
+- Differ in quantity: subalternation
+- Differ in both quality and quantity: contradictories
 
 ## Contradictories
 
@@ -182,6 +185,8 @@ false** are said to be `contingent`.
 
 ![square of opposition](/assets/logic/square-of-opposition.jpg)
 
+## Immediate Inferences
+
 - A is given as true:E is false; I is true; O is false.
 - E is given as true:A is false; I is false; O is true.
 - I is given as true:E is false; A and O are undetermined.
@@ -189,4 +194,120 @@ false** are said to be `contingent`.
 - A is given as false:O is true; E and I are undetermined.
 - E is given as false:I is true; A and O are undetermined.
 - I is given as false:A is false; E is true; O is true.
-- O is given as false:A is true; E is false; I is true.\*
+- O is given as false:A is true; E is false; I is true.
+
+# Further Immediate Inferences
+
+## Conversion
+
+`conversion` is an inference that proceeds by **interchanging the subject and
+predicate** terms of a proposition.
+
+```tex
+E proposition
+P1: No men are angles.
+P2: No angles are men.
+-------------
+I proposition
+P3: Some writers are women.
+P4: Some women are writers.
+```
+
+- **Conversion** is perfectly **valid** for all **E** and **I** propositions.
+- The conversion of an **O** propositions is **not valid**.
+
+  ```tex
+  P1: Some animals are not dogs.
+  P2: Some dogs are not animals.
+  ```
+
+- **Conversion** of **A** is special
+
+  ```tex
+  A: All dogs are animals.
+  Converse: All animals are dog. (X)
+
+  ```
+
+  However, we can use `subaltern` to do **Conversion by limitation**
+
+  ```mermaid
+  graph TD;
+  A["A: All dogs are animals"] --> I["I: Some dogs are animals"]
+  I --conversion--> I1["I1: Some animals are dogs"]
+
+
+  a["A: All S is P"] --> i["I: Some P is S"]
+  ```
+
+- Summary
+  | Convertend | Converse |
+  |--------------- | --------------- |
+  | A: All S is P | I: Some P is S(by limitation) |
+  | E: No S is P | E: No P is S |
+  | I: Some S is P | I: Some P is S |
+  | O: Some S is not P | Not valid |
+
+## Classes and Class Complements
+
+Every class has, associated with it, a **complementary class**, or **complement**, which is the collection of all things that do not belong to the original class.
+
+- Examples:
+
+  ```tex
+  Class: People
+  Complement (Class of Non-persons): Contains no People, but contains everything else.
+  ```
+
+- Contrary and complementary terms:star:
+
+  ```tex
+  Contraries: hero, coward
+  Complementary: hero, non-hero
+  coward is not non-hero!!!
+  ```
+
+## Obversion
+
+**Obversion**: **change its quality** and **replace the predicate term with its
+complement**.
+
+- Obversion of A is valid
+
+  ```tex
+  A: All residents are voters.
+  Obverse:
+  E: No residents are non-voters.
+  ```
+
+- Obversion of E is valid
+
+  ```tex
+  E: No umpires are partisans.
+  Obverse:
+  A: All umpires are Non-partisans.
+  ```
+
+- Obversion of I is valid
+
+  ```tex
+  I: Some mentals are conductors.
+  Obverse:
+  O: Some mentals are not non-conductors.
+  ```
+
+- Obversion of E is valid
+
+  ```tex
+  O: Some nations were not belligerents.
+  Obverse:
+  I: Some nations were non-belligerents.
+  ```
+
+- Summary
+  | Column1 | Column2 |
+  |--------------- | --------------- |
+  | Item1.1 | Item2.1 |
+  | Item2.1 | Item2.2 |
+  | Item1.3 | Item2.3 |
+  | Item1.4 | Item2.4 |
