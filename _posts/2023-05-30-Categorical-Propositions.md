@@ -29,6 +29,9 @@ title: Categorical propositions
   - [Classes and Class Complements](#classes-and-class-complements)
   - [Obversion](#obversion)
   - [Contraposition](#contraposition)
+- [Existential Import and the Interpretation of Categorical Propositions](#existential-import-and-the-interpretation-of-categorical-propositions)
+  - [Existential Import](#existential-import)
+  - [:star: **Boolean Interpretation of categorical logic**](#star-boolean-interpretation-of-categorical-logic)
   <!--toc:end-->
 
 # Four Kinds of Categorical propositions
@@ -495,4 +498,4 @@ typically is uttered to **assert the existence of objects of some kind**.
     > express and defend it without wanting to presuppose that there actually are any bodies that are
     > not acted on by external forces.
 
-- :star: **Boolean Interpretation of categorical logic**
+## :star: **Boolean Interpretation of categorical logic**
