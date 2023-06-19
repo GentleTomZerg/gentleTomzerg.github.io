@@ -411,3 +411,88 @@ complement**.
   | E: No S is P       | O: Some non-P is not non-S(by limitation) |
   | I: Some S is P     | not valid                                 |
   | O: Some S is not P | O: Some non-P is not non-S                |
+
+# Existential Import and the Interpretation of Categorical Propositions
+
+## Existential Import
+
+**Existential Import**: A proposition is said to have existential import if it
+typically is uttered to **assert the existence of objects of some kind**.
+
+- Consequences of existential import
+
+  I and O propositions have existential import.
+
+  ```tex
+  I: Some soldiers are heroes.
+  --> there exists at least one soldier who is a hero.
+  O: Some dogs are not companions.
+  --> there exists at least one dog that is not a companion.
+  ```
+
+  In [earlier introduction](#the-square-of-opposition) we supposed that an I
+  proposition follows validly from its corresponding A proposition by
+  **subalternation**. Similarly, we supposed that an O proposition follows
+  validly from its corresponding E proposition.
+
+  Therefore, if I and O propositions have existential import and they follow
+  validly from their corresponding A and E propositions, then **A and E
+  propositions must also have existential import**. Because a proposition with
+  existential import cannot be derived validly from another that does not have
+  such import.
+
+- The problem of the Consequences
+
+  In [traditional square of opposition](#the-square-of-opposition), A and O
+  propositions are contradictories. **Contradictories can not both be true and
+  both be false.** They can only be one true and one false.
+
+  ```tex
+  A: All inhabitants of Mars are blond.
+  Contradictories
+  O: Some inhabitants of Mars are not blond.
+  ```
+
+  If we interpreted A and O as asserting that there are inhabitants of Mars,
+  then **both of these propositions are <u>false</u> if Mars has no inhabitants.**
+
+  **<center>:star: So A and O are not Contradictories!!!</center>**
+
+- How to solve the **Problem**?
+
+  To rescue the square of opposition, we might insist that all propositions(A,
+  E, I, O) **PRESUPPOSE** that **the classes to which they refer do have
+  members.**
+
+  > To achieve this result, however, we must pay by accepting the **blanket
+  > presupposition** that **all classes(including their complements)** designated by our terms do have
+  > members---are not empty.
+
+- The cost of **blanket presupposition**
+
+  - we will **never** be able to formulate the proposition that **denies that the
+    class has members**. Example:
+
+    ```tex
+    No unicorns are creatures that exist.
+    ```
+
+  - even ordinary usage of language is not in complete accord with this
+    **blanket presupposition**. "All" may refer to possibly empty classes.
+
+    ```tex
+    "All trespassers will be prosecuted."
+    The speaker said this would be intending to ensure that the class will
+    become and remain empty.
+    ```
+
+  - In science and other theoretical spheres, we often wish to reason without
+    making any presupposition about existence. Example,
+
+    > Newton’s first law of motion, for example, asserts that
+    > certain things are true about bodies that are not acted on by any external forces: They remain at
+    > rest, or they continue their straight-line motion. The law may be true; a physicist may wish to
+    > express and defend it without wanting to presuppose that there actually are any bodies that are
+    > not acted on by external forces.
+
+- :star: **Boolean Interpretation of categorical logic**
