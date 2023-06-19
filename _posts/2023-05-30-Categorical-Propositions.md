@@ -23,6 +23,12 @@ title: Categorical propositions
   - [Subcontraries](#subcontraries)
   - [Subalternation](#subalternation)
   - [The Square of Opposition](#the-square-of-opposition)
+  - [Immediate Inferences](#immediate-inferences)
+- [Further Immediate Inferences](#further-immediate-inferences)
+  - [Conversion](#conversion)
+  - [Classes and Class Complements](#classes-and-class-complements)
+  - [Obversion](#obversion)
+  - [Contraposition](#contraposition)
   <!--toc:end-->
 
 # Four Kinds of Categorical propositions
