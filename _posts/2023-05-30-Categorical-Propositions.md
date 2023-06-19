@@ -198,6 +198,10 @@ false** are said to be `contingent`.
 
 # Further Immediate Inferences
 
+- Interchange S and P: **Conversion**
+- Change quality & turn P to non-P: **Obversion**
+- Interchange S and P & turn S, P to non-S, non-P: **Contraposition**
+
 ## Conversion
 
 `conversion` is an inference that proceeds by **interchanging the subject and
@@ -233,7 +237,7 @@ P4: Some women are writers.
 
   ```mermaid
   graph TD;
-  A["A: All dogs are animals"] --> I["I: Some dogs are animals"]
+  ""A["A: All dogs are animals"] --> I["I: Some dogs are animals"]
   I --conversion--> I1["I1: Some animals are dogs"]
 
 
@@ -241,12 +245,13 @@ P4: Some women are writers.
   ```
 
 - Summary
-  | Convertend | Converse |
-  |--------------- | --------------- |
-  | A: All S is P | I: Some P is S(by limitation) |
-  | E: No S is P | E: No P is S |
-  | I: Some S is P | I: Some P is S |
-  | O: Some S is not P | Not valid |
+
+  | Convertend         | Converse                      |
+  | ------------------ | ----------------------------- |
+  | A: All S is P      | I: Some P is S(by limitation) |
+  | E: No S is P       | E: No P is S                  |
+  | I: Some S is P     | I: Some P is S                |
+  | O: Some S is not P | Not valid                     |
 
 ## Classes and Class Complements
 
@@ -272,7 +277,7 @@ Every class has, associated with it, a **complementary class**, or **complement*
 **Obversion**: **change its quality** and **replace the predicate term with its
 complement**.
 
-- Obversion of A is valid
+- Obversion of A == E
 
   ```tex
   A: All residents are voters.
@@ -280,7 +285,7 @@ complement**.
   E: No residents are non-voters.
   ```
 
-- Obversion of E is valid
+- Obversion of E == A
 
   ```tex
   E: No umpires are partisans.
@@ -288,7 +293,7 @@ complement**.
   A: All umpires are Non-partisans.
   ```
 
-- Obversion of I is valid
+- Obversion of I == O
 
   ```tex
   I: Some mentals are conductors.
@@ -296,7 +301,7 @@ complement**.
   O: Some mentals are not non-conductors.
   ```
 
-- Obversion of E is valid
+- Obversion of O == I
 
   ```tex
   O: Some nations were not belligerents.
@@ -305,9 +310,98 @@ complement**.
   ```
 
 - Summary
-  | Column1 | Column2 |
-  |--------------- | --------------- |
-  | Item1.1 | Item2.1 |
-  | Item2.1 | Item2.2 |
-  | Item1.3 | Item2.3 |
-  | Item1.4 | Item2.4 |
+
+  | Obvertend          | Obverse                |
+  | ------------------ | ---------------------- |
+  | A: All S is P      | E: No S is non-P       |
+  | E: No S is P       | A: All S is non-P      |
+  | I: Some S is P     | O: Some S is not non-P |
+  | O: Some S is not P | I: Some S is non-P     |
+
+## Contraposition
+
+**Contraposition**:
+
+- **replace** the **subject** term with the **complement of its
+  predicate** term
+- and **replace** its **predicate** term with **the complement of its subject**
+  term.
+- Neither the quality nor the quantity of the original proposition is changes
+
+---
+
+- Contraposition of A == A
+
+  ```tex
+  A: All members are voters.
+  Contraposition
+  A: All non-voters are non-members.
+
+  --- My example ---
+  A: All dogs are animals.
+  Contraposition
+  A: All non-animals are non-dogs.
+  ```
+
+- Contraposition of O == O
+
+  ```tex
+  O: Some students are not idealists.
+  Contraposition
+  O: Some non-idealists are not non-students
+  ```
+
+  Another way to explain Contraposition of O
+
+  ```mermaid
+  graph TD;
+  O["O: Some S is not P"] -- obverts--> I["I: Some S is non-P"];
+  I -- conversion--> I1["I1: Some non-P is S"]
+  I1 -- obverts--> O1["O1: Some non-P is not non-S"]
+  ```
+
+- Contraposition of I != I
+
+  ```tex
+  I: Some citizens are nonlegislators.
+  Contraposition
+  I: Some legislators are non-citizens.
+  ```
+
+  Another way to explain the Contraposition of I
+
+  ```mermaid
+  graph TD;
+  I["I: Some S is P"] -- obverts--> O["O: Some S is not non-P"];
+  O -- conversion--> O1["O1: Some non-P is not S"]
+  O -- not equal --> O1
+  ```
+
+- Contraposition of E != E, however.
+
+  ```tex
+  E: No wrestlers are weaklings.
+  Contraposition
+  E: No non-weakings are non-wrestlers.
+  ```
+
+  ```mermaid
+  graph TD;
+  E[E: No S is P] -- obverts--> A[A: All S is non-P]
+  A -- converts by limitation--> I[I: Some non-P is S]
+  I -- obverts--> O[O: Some non-P is not non-S]
+  E -- Contraposition by limitation--> O
+  ```
+
+- Summary
+
+  - **Contraposition** is thus seen to be **valid** only when applied to **A** and **O** propositions.
+  - **Not valid** at all for **I** proposition.
+  - **Valid** for **E** only by **limitations**.
+
+  | Premise            | Contraposition                            |
+  | ------------------ | ----------------------------------------- |
+  | A: All S is P      | A: All non-P is non-S                     |
+  | E: No S is P       | O: Some non-P is not non-S(by limitation) |
+  | I: Some S is P     | not valid                                 |
+  | O: Some S is not P | O: Some non-P is not non-S                |
