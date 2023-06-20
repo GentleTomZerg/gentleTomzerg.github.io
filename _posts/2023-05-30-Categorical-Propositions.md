@@ -451,9 +451,9 @@ typically is uttered to **assert the existence of objects of some kind**.
   both be false.** They can only be one true and one false.
 
   ```tex
-  A: All inhabitants of Mars are blond.
+  A: All inhabitants of Mars are blonde.
   Contradictories
-  O: Some inhabitants of Mars are not blond.
+  O: Some inhabitants of Mars are not blonde.
   ```
 
   If we interpreted A and O as asserting that there are inhabitants of Mars,
@@ -499,3 +499,95 @@ typically is uttered to **assert the existence of objects of some kind**.
     > not acted on by external forces.
 
 ## :star: **Boolean Interpretation of categorical logic**
+
+1. **I** and **O** propositions continue to **have existential import** in the
+   **Boolean Interpretation**.
+
+   However, **if the class S is empty**, the propositions "Some S is not P" and
+   "Some S is P" are both false.
+
+2. **A** and **E** are the **contradictories** of the particular propositions, **O**
+   and **I**.
+
+   However, in the **boolean interpretation**, <u>universal propositions are
+   interpreted as having **no** existential import.</u>
+
+   ```tex
+   A and E can both be true even if there might be no unicorns
+   A: All unicorns have horns.
+   E: No unicorns have wings.
+   --------------------------
+   I and O will both be false if there are no unicorns.
+   I: Some unicorns have horns.
+   O: Some unicorns do not have wings.
+   ```
+
+3. If we utter a **universal proposition** with which we do intend to **assert
+   existence**. **Boolean interpretation permits this to be expressed**.
+
+   However, it requires two propositions.
+
+   - one existential in force but particular.
+   - the other universal but not existential in force.
+
+   ```tex
+   "All planets in our solar system revolve around the sun."
+   --> A universal proposition that has no existential import.
+
+   if we express the propositon intending also to assert the existence of
+   planets in our solar system that do so revolve, we would need to add:
+
+   "mars is a planet in our solar system."
+   --> A particular proposition that has desired existential force.
+   ```
+
+4. Changes from adoption of Boolean interpretation
+
+- Corresponding **A** and **E** propositions **can both be true** and are
+  therefore
+  **not contraries**. This may seem paradoxical, but look at the example:
+
+  ```tex
+  A: All unicorns have wings.
+  --> if there is a unicorn, then it has wings.
+  E: No unicorns have wings.
+  --> if there is a unicorn, then it does not have wings.
+  ```
+
+  :star:If there is no unicorn, then A and E can both be true.
+
+- Corresponding **I** and **O** propositions **can both be false** and are
+  therefore **not subcontraries**.
+
+  ```tex
+  I: Some unicorns have wings.
+  O: Some unicorns does not have wings.
+  ```
+
+  I and O have existential import, if unicorn does not exist, then they both be
+  false.
+
+- Subalternation is not valid.
+
+  Because one may not validly infer a proposition that has existential import
+  from one that does not.
+
+5. [Immediate Inferences](#immediate-inferences) in Boolean Interpretation
+
+- **Conversion** for **E** and **I** is preserved.
+- **Contraposition** for **A** and **O** is preserved.
+- **Obversion** for **any proposition** is preserved.
+- Conversion by limitation and Contraposition by limitation are not valid.
+
+6. **Summary**
+
+> The traditional square of opposition, in the Boolean Interpretation, is
+> transformed in the following general way:
+
+- Relations along the side of the square are undone.
+- Relations along the diagonal, contradictory relations remain in force.
+
+> In short, the blanket existential presupposition is rejected by modern logicians. It is a
+> mistake, we hold, **to assume that a class has members if it is not asserted explicitly that it does.**
+> Any argument that relies on this mistaken assumption is said to commit the **fallacy of existential
+> assumption**, or more briefly, the existential fallacy.
