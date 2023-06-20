@@ -591,3 +591,27 @@ typically is uttered to **assert the existence of objects of some kind**.
 > mistake, we hold, **to assume that a class has members if it is not asserted explicitly that it does.**
 > Any argument that relies on this mistaken assumption is said to commit the **fallacy of existential
 > assumption**, or more briefly, the existential fallacy.
+
+# Symbolism and Diagrams for Categorical Propositions
+
+- To say that a class designated by the term S has no members:
+  $$ S = 0 $$
+
+- To say that a class designated by the term S has members:
+  $$ S \neq 0 $$
+
+- To symbolize a class designated by the term non-S:
+  $$ \bar S$$
+
+## Symbolic Representation of Categorical Propositions
+
+| Form | Propositon      | Symbolic Representation |
+| ---- | --------------- | ----------------------- |
+| A    | All S is P      | $S \bar P = 0$          |
+| E    | No S is P       | $S  P = 0$              |
+| I    | Some S is P     | $S P \neq 0$            |
+| O    | Some S is not P | $S \bar P \neq 0$       |
+
+## Venn Graph Representation
+
+![Venn-Graph-Representation](/assets/logic/venn-graph-representation.jpg)
