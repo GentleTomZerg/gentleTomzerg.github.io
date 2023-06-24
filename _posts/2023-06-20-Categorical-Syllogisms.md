@@ -11,7 +11,13 @@ title: Categorical Syllogisms
   - [The mood of the Syllogism](#the-mood-of-the-syllogism)
   - [The figure of the Syllogism](#the-figure-of-the-syllogism)
 - [The Formal Nature of Syllogistic Argument](#the-formal-nature-of-syllogistic-argument)
-- [](#)
+- [Venn Diagram Technique for Testing Syllogisms](#venn-diagram-technique-for-testing-syllogisms)
+  - [Example: Venn Graph for AAA-1](#example-venn-graph-for-aaa-1)
+  - [Diagram the universal premise first](#diagram-the-universal-premise-first)
+  - [:star: Put x at border](#star-put-x-at-border)
+  - [Technique Summary](#technique-summary)
+  - [:star:Why Venn Diagram can tell the validity?](#starwhy-venn-diagram-can-tell-the-validity)
+- [Syllogistic Rules and Syllogistic Fallacies](#syllogistic-rules-and-syllogistic-fallacies)
 <!--toc:end-->
 
 # Standard-Form Categorical Syllogisms
@@ -215,4 +221,147 @@ Examples:
   \end{align*}
   $$
 
-#
+# Venn Diagram Technique for Testing Syllogisms
+
+The syllogism can be drawn as three overlapping circles.
+![Venn-Diagram-Syllogisms](/assets/logic/venn-diagram-syllogisms.jpg)
+
+## Example: Venn Graph for AAA-1
+
+$$
+\begin{align*}
+& \text{All M is P} \\
+& \text{All S is M} \\
+\hline
+& \therefore \text{All S is P}
+\end{align*}
+$$
+
+- All M is P and All S is M
+<style>
+    .image-container {
+        display: flex;
+    }
+
+    .image-container img {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="image-container">
+    <img src="/assets/logic/all-m-is-p.jpg" alt="All M is P">
+    <img src="/assets/logic/all-s-is-m.jpg" alt="All S is M">
+</div>
+
+- Both
+  <div style="text-align: center;">
+    <img src="/assets/logic/both-AA.jpg" alt="All S is M">
+      <p>Combine the two premises</p>
+  </div>
+
+This syllogism is valid if and only if the **two premises imply or entail the
+conclusion** -- that is, if together they say what is said by the conclusion.
+
+## Diagram the universal premise first
+
+$$
+\begin{align*}
+& \text{All artists are egotists} \\
+& \text{Some artists are paupers} \\
+\hline
+& \therefore \text{Some paupers are egotists}
+\end{align*}
+$$
+
+  <div style="text-align: center;">
+    <img src="/assets/logic/universal-first.jpg">
+  </div>
+
+> Had we tried to diagram the particular premise first, before the region $S\bar PM$ was shaded
+> out along with $\bar S \bar P M$ in diagramming the universal premise, we would not have known whether
+> to insert an x in $SPM$ or in $S \bar P M$ or in both.
+
+## :star: Put x at border
+
+$$
+\begin{align*}
+& \text{All great scientists are college graduates} \\
+& \text{Some professional athletes are college graduates} \\
+\hline
+& \therefore \text{Some professional athletes are great scientists}
+\end{align*}
+$$
+
+  <div style="text-align: center;">
+    <img src="/assets/logic/where-x.jpg">
+  </div>
+
+> we may still be puzzled about where to put the x needed in order to diagram the particular
+> premise. That premise is “Some professional athletes are college graduates,” so an x must be
+> inserted somewhere in the overlapping part of the two circles labeled “Professional athletes”and “College graduates.” That overlapping part, however, contains two regions, SPM and
+> SPM. In which of these should we put an x? The premises do not tell us, and if we make an
+> arbitrary decision to place it in one rather than the other, we would be inserting more
+> information into the diagram than the premises warrant—which would spoil the diagram’s use
+> as a test for validity.
+
+  <div style="text-align: center;">
+    <img src="/assets/logic/x-at-border.jpg">
+  </div>
+
+**Placing an x on the line that divides the overlapping region. This indicate
+that there is something that belongs in one of them, but does not indicate which
+one.**
+
+## Technique Summary
+
+1. Label the circles of a three-circle Venn diagram with the syllogism's three
+   terms.
+2. :star:Diagram both premises, diagramming the universal one first if there is one
+   universal and one particular.
+3. :star:In diagramming a particular proposition, to put an x on a line if the
+   premises do not determine on which side of the line it should go.
+4. Inspect the diagram to see whether the diagram of the premises contains a
+   diagram of the conclusion.
+
+## :star:Why Venn Diagram can tell the validity?
+
+- It was shown there that **one legitimate test of the validity or invalidity of a syllogism is to establish the validity or
+  invalidity of a different syllogism that has exactly the same form**.
+
+- Example
+
+  $$
+  \begin{align*}
+  & \text{All successful people are people who are keenly interested in their work} \\
+  & \text{No people who are keenly interested in their work are people whose
+  attention is easily distracted when they are working} \\
+  \hline
+  & \therefore \text{No People whose attention is easily distracted when they are
+  working are successful}
+  \end{align*}
+  $$
+
+  <div style="text-align: center;">
+    <img src="/assets/logic/why-valid.jpg">
+  </div>
+
+  > How does this Venn Diagram tell us that the given syllogism is valid?
+
+  :star: We can construct a syllogism of the same form that involves objects
+  that are immediately present and directly available for our inspection.
+
+  Here is the new syllogism:
+
+  $$
+  \begin{align*}
+  & \text{All points with in the unshaded part of the circle labeled P are
+  points within the unshaded part of the circle labeled M.} \\
+  & \text{No points within the unshaded part of the circle labeled M are points
+  within the unshaded part of the circle labeled S.} \\
+  \hline
+  & \therefore \text{No points within the unshaded part of the circle labeled S
+  are points within the unshaded part of the circle label ed P}
+  \end{align*}
+  $$
+
+# Syllogistic Rules and Syllogistic Fallacies
