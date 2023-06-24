@@ -360,8 +360,141 @@ one.**
   within the unshaded part of the circle labeled S.} \\
   \hline
   & \therefore \text{No points within the unshaded part of the circle labeled S
-  are points within the unshaded part of the circle label ed P}
+  are points within the unshaded part of the circle labeled P}
   \end{align*}
   $$
 
 # Syllogistic Rules and Syllogistic Fallacies
+
+## Rule 1: Avoid Four Terms
+
+A valid standard-form categorical syllogism **must contain exactly three terms**,
+each of which is used in the **same sense** throughout the argument.
+
+If more than three terms are involved, the syllogism is invalid. The fallacy
+thus committed is called the **fallacy of four terms**.
+
+## Rule 2: Distribute the middle term in at least one premise
+
+A term is "distributed" in a proposition when the proposition refers to all
+members of the class designated by that term. **If the middle term is not
+distributed in at least one premise, the connection required by the conclusion
+cannot be made.**
+
+- Example
+
+  $$
+  \begin{align*}
+  & \text{All Russians were revolutionists} \\
+  & \text{All anarchists were revolutionists} \\
+  \hline
+  & \therefore \text{All anarchists were Russians}
+  \end{align*}
+  $$
+
+  > This syllogism is plainly invalid. Its mistake is that it asserts a connection between anarchists
+  > and Russians by relying on the links between each of those classes and the class of
+  > revolutionists—**but revolutionists is an undistributed term in both of the premises. The first
+  > premise does not refer to all revolutionists**, and neither does the second. “Revolutionists” is
+  > the middle term in this argument, and if the middle term is not distributed in at least one
+  > premise of a syllogism, that syllogism cannot be valid.
+
+  This is called the **fallacy of the undistributed middle.**
+
+  :star:We want to use middle term to link the minor and major term. Either the
+  subject or the predicate of the conclusion must be related to the **whole** of
+  the class designated by the middle term. If that is **not so**, it is possible
+  that **each of the terms in the conclusion may be connected to a different part**
+  of the **middle term**, and **not necessarily connected** with each other.
+
+## :star:Rule 3: Any term distributed in the conclusion must be distributed in the premises.
+
+- To refer to all members of a class is to say more about that class than is said when only some of its members are
+  referred to.
+- Therefore, when the conclusion of a syllogism distributes a term that was undistributed in the premises, it
+  says more about that term than the premises did.
+- But **a valid argument is one whose premises logically entail its
+  conclusion**, and for that to be true the **conclusion must not assert any more than is asserted in the premises.**
+- A term that is distributed in the conclusion but is not distributed in the premises is therefore a sure mark that the conclusion
+  has gone beyond its premises and has reached too far.
+- This is called the **fallacy of illicit process**.
+- <h3>Example</h3>
+
+  - Illicit process of the major term
+
+    $$
+    \begin{align*}
+    & \text{All dogs are mammals(Not distributed)} \\
+    & \text{No cats are dogs} \\
+    \hline
+    & \therefore \text{No cats are mammals(Distributed)}
+    \end{align*}
+    $$
+
+  - Illicit process of the minor term
+    $$
+    \begin{align*}
+    & \text{All traditionally religious people are fundamentalists} \\
+    & \text{All traditionally religious people are opponents of abortion(Not distributed)} \\
+    \hline
+    & \therefore \text{All opponents of abortion(Distributed) are fundamentalists}
+    \end{align*}
+    $$
+
+## Rule 4: Avoid two negative premises
+
+- Any **negative proposition** (E or O) **denies class inclusion**; it asserts that some or **all of one class** is **excluded** from the
+  **whole of the other class**.
+- Two premises asserting such exclusion **cannot yield the linkage that the conclusion asserts**,
+  and therefore cannot yield a valid argument.
+- The mistake is named the **fallacy of exclusive premises**.
+- <h3>Further Reflection</h3>
+
+  - S is wholly or partially excluded from all or part of M
+  - P is wholly or partially excluded from all or part of M
+  - However, any one of these relations may very well be established no matter
+    how S and P are related.
+
+## Rule 5: If either premise is negative, the conclusion must be negative
+
+- **If the conclusion is affirmative**—that is, if it asserts that one of the two classes, S or P , is wholly or partly contained
+  in the other—**it can only be inferred from premises that assert the existence of a third class that contains the first
+  and is itself contained in the second**.
+- However, **class inclusion can be stated only by affirmative propositions.**
+- :star:Therefore, **an affirmative conclusion can follow validly only from two affirmative premises.**
+
+---
+
+- The mistake here is called the **fallacy of drawing an affirmative conclusion from a negative premise.**
+- <h3>This fallacy is uncommon, since is quite easy to tell</h3>
+
+  $$
+  \begin{align*}
+  & \text{No poets are accountants} \\
+  & \text{Some artists are poets} \\
+  \hline
+  & \therefore \text{Some artists are accountants}
+  \end{align*}
+  $$
+
+## Rule 6: From two universal premises no particular conclusion may be drawn
+
+> In the Boolean interpretation of categorical propositions, universal propositions (A and
+> E) have no existential import, but particular propositions (I and O) do have such import. Wherever the Boolean
+> interpretation is supposed, as in this book, a rule is needed that precludes passage from premises that have no
+> existential import to a conclusion that does have such import.
+
+- Because of the Boolean Interpretation, it will show a clear fallacy that if the premises
+  of an argument do not assert the existence of anything at all, the conclusion
+  inferred asserts the existence of something.
+- This mistake is called **existential fallacy**.
+- <h3>Example</h3>
+
+  $$
+  \begin{align*}
+  & \text{All household pets are domestic animals} \\
+  & \text{No unicorns(no existential import) are domestic animals} \\
+  \hline
+  & \therefore \text{Some unicorns(have existential import) are not household pets}
+  \end{align*}
+  $$
