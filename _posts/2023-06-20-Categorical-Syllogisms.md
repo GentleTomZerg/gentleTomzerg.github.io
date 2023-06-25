@@ -18,6 +18,13 @@ title: Categorical Syllogisms
   - [Technique Summary](#technique-summary)
   - [:star:Why Venn Diagram can tell the validity?](#starwhy-venn-diagram-can-tell-the-validity)
 - [Syllogistic Rules and Syllogistic Fallacies](#syllogistic-rules-and-syllogistic-fallacies)
+  - [Rule 1: Avoid Four Terms](#rule-1-avoid-four-terms)
+  - [Rule 2: Distribute the middle term in at least one premise](#rule-2-distribute-the-middle-term-in-at-least-one-premise)
+  - [:star:Rule 3: Any term distributed in the conclusion must be distributed in the premises.](#starrule-3-any-term-distributed-in-the-conclusion-must-be-distributed-in-the-premises)
+  - [Rule 4: Avoid two negative premises](#rule-4-avoid-two-negative-premises)
+  - [Rule 5: If either premise is negative, the conclusion must be negative](#rule-5-if-either-premise-is-negative-the-conclusion-must-be-negative)
+  - [Rule 6: From two universal premises no particular conclusion may be drawn](#rule-6-from-two-universal-premises-no-particular-conclusion-may-be-drawn)
+- [:star: Exposition of the Fifteen Valid Forms of the Categorical Syllogism](#star-exposition-of-the-fifteen-valid-forms-of-the-categorical-syllogism)
 <!--toc:end-->
 
 # Standard-Form Categorical Syllogisms
@@ -498,3 +505,30 @@ cannot be made.**
   & \therefore \text{Some unicorns(have existential import) are not household pets}
   \end{align*}
   $$
+
+# :star: Exposition of the Fifteen Valid Forms of the Categorical Syllogism
+
+- <h3>AAA-1  Barbara</h3>
+- <h3>EAE-1  Celarent</h3>
+- <h3>AII-1  Darii</h3>
+- <h3>EIO-1  Ferio</h3>
+
+---
+
+- <h3>AEE-2  Camestres</h3>
+- <h3>EAE-2  Cesare</h3>
+- <h3>AOO-2  Baroko</h3>
+- <h3>EIO-2  Festino</h3>
+
+---
+
+- <h3>AII-3  Datisi</h3>
+- <h3>IAI-3  Disamis</h3>
+- <h3>EIO-3  Ferison</h3>
+- <h3>OAO-3  Bokardo</h3>
+
+---
+
+- <h3>AEE-4  Camenes</h3>
+- <h3>IAI-4  Dimaris</h3>
+- <h3>EIO-4  Fresison</h3>
