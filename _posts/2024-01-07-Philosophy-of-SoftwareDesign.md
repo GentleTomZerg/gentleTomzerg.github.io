@@ -77,7 +77,7 @@ details.
 > **The best modules are those that provide powerful functionality yet have simple
 interfaces.**
 
-![Deep and Shallow Modules](../assets/software-design.assets/deep_modules.png)
+![Deep and Shallow Modules](/assets/software-design.assets/deep_modules.png)
 
 ## Shallow Modules
 >  a shallow module is one whose interface is relatively complex
