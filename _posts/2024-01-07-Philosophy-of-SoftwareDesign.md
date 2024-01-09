@@ -182,4 +182,116 @@ Questions: When Designing Modules,
 - General Purpose? -> might include facilities that are never actually needed.
 - Special Purpose? -> you can always refactor it to make it general purpose.
 
-## Make classess some what general-purpose
+## Make classess somewhat general-purpose
+
+**somewhat general-purpose** means that the module's functionality should
+reflect your current needs, but its interface should be general enough to
+support multiple uses.
+
+- Examples:
+
+  App -> GUI text editor
+
+  ```tex
+
+  Design 1:
+  void backspace(Cursor cursor);
+  void delete(Cursor cursor);
+  void deleteSelection(Selection selection);
+
+  - high coginitive load
+  - shallow methods -> each method only suitable for one user interface
+    operation
+  - user had to learn about a large number of methods
+  ```
+
+  ```tex
+
+  Design 2:
+  void insert(Position position, String newText);
+  void delete(Position start, String end);
+  Position changePostion(Position position, int numChars);
+
+  now, the delete key looks like:
+  text.delete(cursor, text.changePostion(cursor, 1));
+  the backspace looks like:
+  text.delete(text.changePostion(cursor, -1), cursor);
+  ```
+
+  Here, the details are important: user wants to know which characters are
+  deleted. **When the details are important it is better to make them explicit
+  and as obvious as possible.**
+
+## How to design general-purpose class?
+
+- What is the simplest interface that will cover all my current needs?
+
+  > If you reduce the number of methods in an API without reducing its overall
+  > capabilities, then you are probably creating more general-purpose
+  > methods.
+
+- In how many situations will this method be used? -> Don't be special
+  purpose!!!
+- Is this API easy to use for my current needs? -> Don't go too far!!!
+
+# Different Layer, Different Abstraction
+
+## :triangular_flag_on_post:Pass-through methods:triangular_flag_on_post:
+
+When adjacent layers have similar abstractions, the problem often manifests
+itself in the form of `pass-through` methods. A pass-through method is one that
+**does little except invoke another method, whose signature is similar or
+identical to that of the calling method**.
+
+- make methods shallower -> increase the interface complexity; no contribution
+  to the functionality of the system.
+
+- indicates that there is a confusion over the division of responsibility
+  between classes.
+
+  ```java
+  public class TextDocument ... {
+      private TextArea textArea;
+      private TextDocumentListener listener;
+      ...
+      public Character getLastTypedCharacter() {
+          return textArea.getLastTypedCharacter();
+      }
+
+      public int getCursorOffset() {
+          return textArea.getCursorOffset();
+      }
+      public void insertString(String textToInsert, int offset) {
+          textArea.insertString(textToInsert, offset);
+      }
+      public void willInsertString(String stringToInsert, int offset) {
+          if (listener != null) {
+              listener.willInsertString(this, stringToInsert, offset);
+          }
+      }
+      ...
+  }
+  ```
+
+  > A pass-through method is one that does nothing except pass its arguments to
+  > another method, usually with the same API as the pass-through method. This
+  > typically indicates that there is not a clean division of responsibility between
+  > the classes.
+
+- Solutions:
+  ![solutions-for-passthrough](/assets/software-design.assets/solutions_for_passthrough.jpg)
+
+  - (7.1b) expose the lower level class directly to the callers of the higher
+    level class.
+
+  - (7.1c) redistribute the functionality between the classes
+  - (7.1d) if the class cannot be disentangled, merge them together
+
+## When is Duplications OK?
+
+Having methods with the same signature is not always bad. The important thing is
+that **each new method should contribute significant functionality**.
+
+- several methods have same signature as long as each of them provides
+  useful and distinct functionality.
+- several methods provide different implementations of the same interface.
