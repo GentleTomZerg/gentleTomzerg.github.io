@@ -295,3 +295,96 @@ that **each new method should contribute significant functionality**.
 - several methods have same signature as long as each of them provides
   useful and distinct functionality.
 - several methods provide different implementations of the same interface.
+
+## Decorator Design Pattern
+
+Decorator Design Pattern encourages API duplication across layers. The decorator
+objects provides an API similar or identical to the underlying object and its
+method invoke the mehthods of the underlying object.
+
+- Motivation: separate special-purpose extentions of a class from a more generic
+  core.
+- Problem: decorator classes tend to be shallow. -> a large amount of
+  boilerplate for a small amount of new functionality
+- Note: easy to overuse!!!
+
+Whether to use Decorator?
+
+- Could you add the new functionality directly to the underlying class, rather
+  than creating a decorator class?
+- If the functionality is specialized for a particular use case, would it make
+  sense to merge it with the use case rather than creating a separate class?
+- Could you merge the new functionality with an existing decorator?
+- Whether the new functionality really needs to wrap the existing
+  functionality.
+
+## Interface VS Implementation
+
+Another application of the "different layer, different abstraction" rule is that
+**the interface of a class should normally be different from its
+implementation**:
+the representations used internally should be different from the abstractions
+that appear in the interface. -> **If the two have similar abstractions, then the
+class probably isn't very deep**.
+
+Examples:
+
+```tex
+App: text editor -> the text are stores as lines
+
+Design 1:
+getLine()
+putLine()
+
+Problem:
+shallow and awkward to use, the interface getLine() has the implementations of
+get line, when user use this, they have to handle the changes between lines.
+
+Design 2:
+insert() -> characters at some position
+delete() -> characters at some position
+
+Note:
+the API insert() and delete() uses lines representations, but it provides a
+character based interface, which makes the text class deeper and simplifies
+higher level code that uses the class.
+```
+
+## Pass-through Variables
+
+Another form of API duplication across layers is a pass-through variable, which
+is a varialbe that is passed down through the long chain of methods.
+
+Pass-through Variables add **complexity** because **they force all of the
+intermediate methods to be aware of their existence**, even though the methods
+have no use for the variables (See Figure a).
+
+![techniques for dealing pass-through variables](/assets/software-design.assets/pass-through-variables.png)
+
+How to solve?
+
+- **If there is already an object shared between the topmost and bottommost
+  methods.** (See Figure b) However, if there is such an object, then it may
+  itself be a pass-through variable(how else does m3 get access to it).
+
+- **Store information in a global variable.**(See Figure c) However, global
+  variables make it impossible to create two indenpendent instances of the same
+  system in the same process, since access to the global variables will
+  conflict. Examples: when you do testing, you want to use different
+  configurations.
+
+- **:star:Introduce a context object** (See Figure d)
+
+  The context allows multiple
+  instances of the system to coexist in a single process, each with its own
+  context. The class of m3 and class of m1 stores a reference to the context
+  object. Thus, the context is available everywhere, but it only appears as an
+  explicit argument in constructors.
+
+  However, it has disadvantages:
+
+  - it may **not be obvious** why a particular variable is present, or where it
+    is used.
+
+  - Without discipline, a context can turn into a huge grab-bag of data that creates **nonobvious dependencies** throughout the system.
+  - Contexts may also create **thread-safety** issues
