@@ -1,7 +1,7 @@
 ---
 author: GentleTomZerg
 tags: Software Design
-title: Philosopy of Software Design
+title: Philosophy of Software Design
 ---
 
 # Nature of Complexity
@@ -15,9 +15,9 @@ title: Philosopy of Software Design
 
 - **Change amplification**
   > a seemingly simple change requires code modifications in many different places.
-- **Coginitive load**
+- **Cognitive load**
   > refers to how much a developer needs to know in order to complete a task.
-- **Unknown unknows**
+- **Unknown unknowns**
   > it is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task sucessfully.
 
 ## Causes of Complexity
@@ -27,7 +27,7 @@ title: Philosopy of Software Design
 
 ## Complexity is Incremental
 
-# Stratigic & Tactical Programming
+# Strategic & Tactical Programming
 
 ## Tactical programming
 
@@ -59,10 +59,10 @@ title: Philosopy of Software Design
 
 Modules can take many forms -> classes, subsystems, or services.
 
-- Ideally, each module would be completely indenpendent of the others > a developer could work in any of the modules without
+- Ideally, each module would be completely independent of the others > a developer could work in any of the modules without
   knowing anything about any of the other modules
 
-- Reality, **modules must work together by calling each others's functions or methods.** Dpendencies always exists!!!
+- Reality, **modules must work together by calling each others's functions or methods.** Dependencies always exists!!!
 
 ## Modular Design
 
@@ -86,7 +86,7 @@ Modules can take many forms -> classes, subsystems, or services.
 > abstraction is a simplified view of an entity, which omits **unimportant**
 > details.
 
-- Include unimportant details -> increase `coginitive load`
+- Include unimportant details -> increase `cognitive load`
 - Omit important details -> increase `obscurity`
 
 ## Deep Modules
@@ -121,7 +121,7 @@ private void addNullValueForAttribute(String attribute) {
 
 > techniques for creating deep modules
 
-- reduce coginitive load -> simplifies interface
+- reduce cognitive load -> simplifies interface
 - easier to evolve
 
 ## :triangular_flag_on_post:Information Leakage:triangular_flag_on_post:
@@ -147,13 +147,13 @@ order in which operations will occur.
 
   Design -> Three Classes:
   1. read file
-  2. perform modiifcations
+  2. perform modifications
   3. write out new version
 
   Problem: Both three class has knowledge about the file format -> results in
   information leakage.
 
-  Solution: Combine the core mechanisms for reading and wirting files into single
+  Solution: Combine the core mechanisms for reading and writing files into single
   class.
   ```
 
@@ -163,7 +163,7 @@ order in which operations will occur.
   modules, focus on the knowledge that's needed to perform each task, not the
   order in which tasks occur.**
 
-  > In temporal decompositon, execution order is reflected in the code
+  > In temporal decomposition, execution order is reflected in the code
   > structure: operations that happen at different times are in different
   > methods or classes. If the same knowledge is used at different points in
   > execution, it gets encoded in multiple places, resulting in information
@@ -182,7 +182,7 @@ Questions: When Designing Modules,
 - General Purpose? -> might include facilities that are never actually needed.
 - Special Purpose? -> you can always refactor it to make it general purpose.
 
-## Make classess somewhat general-purpose
+## Make classes somewhat general-purpose
 
 **somewhat general-purpose** means that the module's functionality should
 reflect your current needs, but its interface should be general enough to
@@ -199,7 +199,7 @@ support multiple uses.
   void delete(Cursor cursor);
   void deleteSelection(Selection selection);
 
-  - high coginitive load
+  - high cognitive load
   - shallow methods -> each method only suitable for one user interface
     operation
   - user had to learn about a large number of methods
@@ -210,12 +210,12 @@ support multiple uses.
   Design 2:
   void insert(Position position, String newText);
   void delete(Position start, String end);
-  Position changePostion(Position position, int numChars);
+  Position changePosition(Position position, int numChars);
 
   now, the delete key looks like:
-  text.delete(cursor, text.changePostion(cursor, 1));
+  text.delete(cursor, text.changePosition(cursor, 1));
   the backspace looks like:
-  text.delete(text.changePostion(cursor, -1), cursor);
+  text.delete(text.changePosition(cursor, -1), cursor);
   ```
 
   Here, the details are important: user wants to know which characters are
@@ -300,9 +300,9 @@ that **each new method should contribute significant functionality**.
 
 Decorator Design Pattern encourages API duplication across layers. The decorator
 objects provides an API similar or identical to the underlying object and its
-method invoke the mehthods of the underlying object.
+method invoke the methods of the underlying object.
 
-- Motivation: separate special-purpose extentions of a class from a more generic
+- Motivation: separate special-purpose extensions of a class from a more generic
   core.
 - Problem: decorator classes tend to be shallow. -> a large amount of
   boilerplate for a small amount of new functionality
@@ -353,7 +353,7 @@ higher level code that uses the class.
 ## Pass-through Variables
 
 Another form of API duplication across layers is a pass-through variable, which
-is a varialbe that is passed down through the long chain of methods.
+is a variable that is passed down through the long chain of methods.
 
 Pass-through Variables add **complexity** because **they force all of the
 intermediate methods to be aware of their existence**, even though the methods
@@ -368,7 +368,7 @@ How to solve?
   itself be a pass-through variable(how else does m3 get access to it).
 
 - **Store information in a global variable.**(See Figure c) However, global
-  variables make it impossible to create two indenpendent instances of the same
+  variables make it impossible to create two independent instances of the same
   system in the same process, since access to the global variables will
   conflict. Examples: when you do testing, you want to use different
   configurations.
@@ -386,5 +386,5 @@ How to solve?
   - it may **not be obvious** why a particular variable is present, or where it
     is used.
 
-  - Without discipline, a context can turn into a huge grab-bag of data that creates **nonobvious dependencies** throughout the system.
+  - Without discipline, a context can turn into a huge grab-bag of data that creates **notorious dependencies** throughout the system.
   - Contexts may also create **thread-safety** issues
