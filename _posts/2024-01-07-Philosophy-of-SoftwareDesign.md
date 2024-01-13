@@ -18,7 +18,7 @@ title: Philosophy of Software Design
 - **Cognitive load**
   > refers to how much a developer needs to know in order to complete a task.
 - **Unknown unknowns**
-  > it is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task sucessfully.
+  > it is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task successfully.
 
 ## Causes of Complexity
 
@@ -388,3 +388,33 @@ How to solve?
 
   - Without discipline, a context can turn into a huge grab-bag of data that creates **notorious dependencies** throughout the system.
   - Contexts may also create **thread-safety** issues
+
+# Pull Complexity Downwards
+Suppose you are developing a new module, and you discover a piece of **unavoidable** complexity. Which is better?
+
+- let the users deal with the complexity
+- handle the complexity internally within the module
+
+**It is more important for a module to have a simple interface than a simple implementation**
+
+## Examples: Configuration Parameters
+
+> Configuration parameters are an example of moving complexity upwards instead
+of down. Rather than determining a particular behavior internally, a class can
+export a few parameters that control its behavior, such as the size of a cache or
+the number of times to retry a request before giving up. Users of the class must
+then specify appropriate values for the parameters. Configuration parameters
+have become very popular in systems today; some systems have hundreds of
+them.
+
+- Good Ways: allow user to tune system for their particular requirements and workloads.
+- Bad Ways: provide an easy excuse to avoid dealing with important issues and pass them on to someone else.
+
+## When to pull complexity downwards?
+- the **complexity** being pulled down is **closely related** to the class's **existing functionality**.
+- pulling the complexity down **simplifies** the class's **interface**
+- the goal is to minimize overall **system** complexity
+
+# Better Together Or Better Apart?
+
+
