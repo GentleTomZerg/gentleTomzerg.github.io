@@ -415,6 +415,72 @@ them.
 - pulling the complexity down **simplifies** the class's **interface**
 - the goal is to minimize overall **system** complexity
 
-# Better Together Or Better Apart?
+# :star:Better Together Or Better Apart
+
+> When deciding whether to combine or separate, the goal is to reduce the complexity of the system as a whole and improve its modularity. It might appear that the best way to achieve this goal is to **divide** the system into **a large number of small components**.
+
+Problem of Subdivision:
+- Some **complexity** comes just from the **number of components** -> harder to keep track of and harder to find a desired component.
+- Result in **additional code to manage the components**
+- Creates **separation** -> make the developer harder to see the components at the same time or even be aware of their existence.
+- Result in **duplications**
+
+When it makes sense to separate?
+
+## Bring together if information is shared
+
+Examples:
+```tex
+App -> Http Server
+
+Implementation:
+String read(text from network socket)
+Map parse(String from read())
+
+Problem: both of the methods ended up with
+considerable knowledge of the format of HTTP requests: the first method was
+only trying to read the request, not parse it, but it couldn’t identify the end of the
+request without doing most of the work of parsing it (for example, it had to parse
+header lines in order to identify the header containing the overall request length).
+```
+
+## Bring together if it will simplify the interface
+> When two or more modules are combined into a single module, it may be
+possible to define an interface for the new module that is simpler or easier to use
+than the original interfaces. This often happens when the original modules each
+implement part of the solution to a problem. 
+
+## Bring together to eliminate duplication
+If you find the same pattern of code repeated over and over, see if you can reorganize the code to eliminate the repetition.
+
+- Approach 1: refactor the repeated code to eliminate the repetition. -> Most effective when the replacement method has a simple signature.
+- Approach 2: refactor the code so that the snippet in question only needs to be executed in one place
+
+## :triangular_flag_on_post:Repetition:triangular_flag_on_post:
+> If the same piece of code (or code that is almost the same) appears over and
+over again, that’s a red flag that you haven’t found the right abstractions.
+
+
+## Separate general-purpose and special-purpose code
+If a module contains a mechanism that can be used for several different purposes,
+then it should provide just that one general-purpose mechanism.
+
+**Special-purpose code associated with a general-purpose mechanism should normally go in a <u>different module</u>**
+Example:
+```tex
+App -> GUI text editor
+text class -> provide general purpose operations like delete() and insert()
+user interface class -> provide special purpose operations like delete the selection
+```
+Conclusion:
+- **the <u>lower layers</u> of a system tend to be more <u>general-purpose</u> and the <u>upper layers</u> more <u>special-purpose</u>.**
+- When you encounter a class that includes both general purpose and special purpose features for the same abstraction, see if the class can be separated into two classes.
+
+## :triangular_flag_on_post:Special-General Mixture:triangular_flag_on_post:
+> This red flag occurs when a general-purpose mechanism also contains code
+specialized for a particular use of that mechanism. This makes the mechanism
+more complicated and creates information leakage between the mechanism
+and the particular use case: future modifications to the use case are likely to
+require changes to the underlying mechanism as well.
 
 
