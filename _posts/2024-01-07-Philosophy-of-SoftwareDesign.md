@@ -493,3 +493,27 @@ Conclusion:
 > more complicated and creates information leakage between the mechanism
 > and the particular use case: future modifications to the use case are likely to
 > require changes to the underlying mechanism as well.
+
+## Splitting and joining methods
+
+> It is better to divide an existing method into multiple smaller methods? Or, should two smaller methods be combined into one larger one?
+
+**Each method should do one thing and do it completely.** The method should have a clean and simple interface, so that users don't need to have much information in their heads in order to use it correctly. The method should be deep: its interface should be much simpler than its implementation.
+
+- Splitting up a method only makes sense if it results in **cleaner abstractions**.
+
+  ![split methods](/assets/software-design.assets/split-method.png)
+  - figure b: factoring out a subtask into a separate method
+
+    makes sense if there is a subtask that is cleanly separable from the rest of the original method, which means someone reading the child method doesn't need to know anything about the parent method and vice versa.
+
+    If you make a split of this form and then **find yourself flipping back and forth between the parent and child** to understand how they work together, that is a red flag indicating that the split was probably **a bad idea**.
+
+  - figure c: split a method into two separate methods, each visible to callers of the original method.
+
+    not make sense very often -> result in callers having to deal with multiple methods instead of one.
+    run the risk of ending up with several shallow methods(figure d).
+
+## :triangular_flag_on_post:Conjoined Methods:triangular_flag_on_post:
+
+> It should be possible to understand each method independently. If you can’t understand the implementation of one method without also understanding the implementation of another, that’s a red flag. This red flag can occur in other contexts as well: if two pieces of code are physically separated, but each can only be understood by looking at the other, that is a red flag.
