@@ -503,6 +503,7 @@ Conclusion:
 - Splitting up a method only makes sense if it results in **cleaner abstractions**.
 
   ![split methods](/assets/software-design.assets/split-method.png)
+
   - figure b: factoring out a subtask into a separate method
 
     makes sense if there is a subtask that is cleanly separable from the rest of the original method, which means someone reading the child method doesn't need to know anything about the parent method and vice versa.
@@ -517,3 +518,5 @@ Conclusion:
 ## :triangular_flag_on_post:Conjoined Methods:triangular_flag_on_post:
 
 > It should be possible to understand each method independently. If you can’t understand the implementation of one method without also understanding the implementation of another, that’s a red flag. This red flag can occur in other contexts as well: if two pieces of code are physically separated, but each can only be understood by looking at the other, that is a red flag.
+
+# Define Errors Out Of Existence
