@@ -520,3 +520,24 @@ Conclusion:
 > It should be possible to understand each method independently. If you can’t understand the implementation of one method without also understanding the implementation of another, that’s a red flag. This red flag can occur in other contexts as well: if two pieces of code are physically separated, but each can only be understood by looking at the other, that is a red flag.
 
 # Define Errors Out Of Existence
+
+Code that deals with special conditions is inherently harder to write than code that deals with normal cases, and developers often define exceptions without considering how they will be handled.
+
+- Why exceptions contribute disproportionately to complexity?
+- How to simplify exception handling?
+
+Key: **Reduce the number of places where exceptions must be handled**
+
+## Why exceptions add complexity
+
+When exception occurs:
+- Approach 1: move forward and complete the work in progress in spite of the exception.
+
+- Approach 2: abort the operation in progress and report the exception upwards.
+  - BUT: the exception handling code might need to restore consistency in distributed system
+  - BUT: cascade of exceptions -> handle exceptions of exception handling code
+
+- Try catch boilerplate
+- Untested error handling code:  `“code	that	hasn’t	been	executed	doesn’t	work”`
+
+## Too many exceptions
