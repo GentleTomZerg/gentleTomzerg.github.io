@@ -541,3 +541,56 @@ When exception occurs:
 - Untested error handling code:  `“code	that	hasn’t	been	executed	doesn’t	work”`
 
 ## Too many exceptions
+
+- The exceptions thrown by a class are part of its interface; **classes with lots of exceptions have complex interfaces, and they are shallower than classes with fewer exceptions**.
+
+- The complexity of exceptions comes from the exception handling code. The best way to reduce the complexity damage caused by exception handling is to **reduce the number of places where exceptions have to be handled**.
+
+## Solution1: Define errors out of existence
+
+Examples: 
+- Unset a non-exists variable
+
+  >  I	made	this	mistake	myself	in	the	design	of	the	Tcl	scripting	language.	Tcl contains	an	unset	command	that	can	be	used	to	remove	a	variable.	I	defined unset	so	that	it	throws	an	error	if	the	variable	doesn’t	exist.	At	the	time	I	thought that	it	must	be	a	bug	if	someone	tries	to	delete	a	variable	that	doesn’t	exist,	so	Tcl should	report	it.	However,	one	of	the	most	common	uses	of	unset	is	to	clean	up temporary	state	created	by	some	previous	operation.	It’s	often	hard	to	predict exactly	what	state	was	created,	particularly	if	the	operation	aborted	partway through.	Thus,	the	simplest	thing	is	to	delete	all	of	the	variables	that	might possibly	have	been	created.	The	definition	of	unset	makes	this	awkward: developers	end	up	enclosing	calls	to	unset	in	catch	statements	to	catch	and ignore	errors	thrown	by	unset.	In	retrospect,	the	definition	of	the	unset command	is	one	of	the	biggest	mistakes	I	made	in	the	design	of	Tcl.
+
+- Java substring
+
+  > if	either	index	is	outside	the	range	of	the	string,	then substring	throws	IndexOutOfBoundsException.	This	exception	is	unnecessary and	complicates	the	use	of	this	method. The	Java	substring	method	would	be	easier	to	use	if	it	performed	this adjustment	automatically,	so	that	it	implemented	the	following	API:	“returns	the characters	of	the	string	(if	any)	with	index	greater	than	or	equal	to	beginIndex and	less	than	endIndex.”	This	is	a	simple	and	natural	API,	and	it	defines	the IndexOutOfBoundsException	exception	out	of	existence.	
+
+- Argue: If errors are defined out of existence, won't that result in buggier software?
+
+  BUT: error-ful approach may catch some bugs but increase complexity, which results in other bugs. Developers must write additional code to avoid or ignore the errors.
+  
+**The best way to reduce bugs is to make software simpler**
+
+## Solution2: Mask exceptions
+
+An exceptional condition is detected and **handled at a low level** in the system, so that higher levels of software need not be aware of the condition.
+
+Example:
+
+> For instance, in a network transport protocol such as TCP, packets can be dropped for various reasons such as corruption and congestion. TCP masks packet loss by resending lost packets within its implementation, so all data eventually gets through and clients are unaware of the dropped packets
+
+## Solution3: Exception aggregation
+
+The idea behind exception aggregation is to handle many exceptions with a single piece of code; rather than writing distinct handlers for many individual exceptions, handle them all in one place with a single handler.
+
+Examples:
+
+Consider how to handle missing parameters in a Web server. A Web server implements a collection of URLs. When the server receives an incoming URL, it dispatches to a URL-specific service method to process that URL and generate a response. The URL contains various parameters that are used to generate the response. Each service method will call a lower-level method (let’s call it getParameter) to extract the parameters that it needs from the URL. If the URL does not contain the desired parameter, getParameter throws an exception.
+
+Design 1: catch the problem in each handle function
+![exception_handling_design1](../assets/software-design.assets/exception_handle_design1.png)
+
+Design 2: aggregate the catch clause to the higher dispatcher class
+![exception_handling_design1](../assets/software-design.assets/exception_handle_design2.png)
+
+- Encapsulation and Information Hiding: 
+
+  - the top-level exception handler encapsulated knowledge about how to generate error response, but know nothing about specific errors
+
+  - the `getParameter` encapsulates knowledge about how to extract a parameter from a URL, and it also knows how to describe extraction errors in a human readable form, but know nothing about the syntax of HTTP error response.
+  
+**NOTE**: Exception aggregation works best if an exception propagates several levels up the stack before it is handled; this allows more exceptions from more methods to be handled in the same place.
+
+## Solution4: Just Crash?
