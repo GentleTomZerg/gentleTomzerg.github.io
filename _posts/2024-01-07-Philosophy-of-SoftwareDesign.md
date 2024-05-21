@@ -594,3 +594,26 @@ Design 2: aggregate the catch clause to the higher dispatcher class
 **NOTE**: Exception aggregation works best if an exception propagates several levels up the stack before it is handled; this allows more exceptions from more methods to be handled in the same place.
 
 ## Solution4: Just Crash?
+
+In most applications there will be certain errors that it's not worth trying to handle. Typically, these errors are difficult or impossible to handle and don't occur very often. The simplest thing to do in response to these errors is to print diagnostic information and then abort the application.
+
+- Out of Memory
+- I/O Error
+
+## Design special cases out of existence
+
+Special cases can result in code that is riddled with if statements, which make the code hard to understand and lead to bugs. Thus, special cases should be eliminated wherever possible. The best way to do this is by designing the normal case in a way that automatically handles the special cases without any extra code.
+
+Example:
+Text Editor -> How to represent selection?
+
+Approach1: startIdx, endIdx, no_selection_flag -> result in numerous checks to detect the no selection condition and handle it specially.
+
+Approach2: startIdx, endIdx -> startIdx == endIdx means a empty selection. No need to define a special case!!!
+
+# Design it Twice
+
+Designing software is hard, so it’s unlikely that your first thoughts about how to structure a module or system will produce the best design. You’ll end up with a much better result if you consider multiple options for each major design decision: **design it twice**.
+ 
+# Why Write Comments? The Four Excuses
+
