@@ -617,3 +617,92 @@ Designing software is hard, so it’s unlikely that your first thoughts about ho
  
 # Why Write Comments? The Four Excuses
 
+- Good code is self-documenting -> BUT: **If users must read the code of a method in order to use it, then there is no abstraction**
+
+- I don't have time to write comments -> BUT: **Comments will pay for themselves, good trade off**
+
+- Comments get out of date and become misleading -> BUT: **Keep them up-to-date**
+
+- All the comments I have seen are worthless
+
+:star:**The overall idea behind comments is to capture information that was in the mind of the designer but couldn't be represented in the code.**
+
+# Comments Should Describe Things that Aren't Obvious from the Code
+
+Developers should be able to understand the abstraction provided by a module without reading any code other than its externally visible declarations. 
+
+## Pick conventions
+
+- **Interface**: a `comment block` that immediately precedes the declaration of a
+module such as a class, data structure, function, or method. The comment
+describe’s the module’s interface. 
+
+  - For a class, the comment describes the overall abstraction provided by the class. 
+  - For a method or function, the comment describes its overall behavior, its arguments and return value, if any, any side effects or exceptions that it generates, and any other requirements the caller must satisfy before invoking the method.
+
+- **Data structure member**: a comment `next to the declaration of a field` in a data
+structure, such as an instance variable or static variable for a class.
+
+- **Implementation comment**: a comment `inside` the code of a method or
+function, which describes how the code works internally.
+
+- **Cross-module comment**: a comment describing dependencies that cross
+module boundaries.
+
+## Don't repeat the code
+- Mistake 1:
+
+  After write a comment, ask yourself: **could someone who has never seen the code write the comment just by looking at the code next to the comment** -> If YES: the comments are worthless
+
+  Example:
+  ```java
+  //Add a horizontal scroll	bar
+  hScrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
+  add(hScrollBar, BorderLayout.SOUTH);
+  // Add a vertical scroll bar
+  vScrollBar = new JScrollBar(JScrollBar.VERTICAL);
+  add(vScrollBar, BorderLayout.EAST);
+  // Initialize the caret-position related values
+  caretX     = 0;
+  caretY     = 0;
+  caretMemX  = null;
+  ```
+
+- Mistake 2:
+
+  Use the same words in the comments that appear in the name of the entity being documented
+  
+  Example:
+  ```java
+  /*
+   * Obtain a normalized resource name from REQ.
+   */
+   private static String[] getNormalizedResourceNames(HTTPRequest req) ...
+   /*
+   * Downcast PARAMETER to TYPE.
+   */
+   private static Object downCastParameter(String parameter, String type)
+   ...
+   /*
+   * The horizontal padding of each line in the text.
+   */
+   private static final int textHorizontalPadding = 4;
+  ```
+  
+  :star: **Use different words in the comments form those in the name of the entity being described**
+  
+  Example:
+  ```java
+   /*
+   * The amount of blank space to leave on the left and
+   * right sides of each line of text, in pixels.
+   */
+   private static final int textHorizontalPadding = 4;
+  ```
+## :triangular_flag_on_post:Comment Repeats Code:triangular_flag_on_post:
+
+> If the information in a comment is already obvious from the code next to the comment, then the comment isn’t helpful. One example of this is when the comment uses the same words that make up the name of the thing it is describing
+
+## Lower-level comments add precision
+
+Comments augment the code by providing information at a different level of detail
