@@ -714,3 +714,111 @@ Developers should be able to understand the abstraction provided by a module wit
 ## Lower-level comments add precision
 
 Comments augment the code by providing information at a different level of detail
+
+- lower, more detailed, level than the code -> Add **precision** by clarifying the exact meaning of the code
+- higher, more abstract, level than the code -> offer **intuition**, reasoning behind the code, simpler and more abstract way of thinking about the code
+
+**Precision** is most useful when commenting **variable declarations** such as class interface variables, method arguments, and return values.
+
+- Problem: Comments are too vague
+
+  Example:
+
+  ```java
+   //Current offset in resp Buffer
+   uint32_t offset;
+   // Contains all line-widths inside the document and
+   // number of appearances.
+   private TreeMap<Integer, Integer> lineWidths;
+  ```
+  
+  - What does current mean?
+  - Are widths measured in pixels or characters?
+  
+  Better version:
+
+  ```java
+   //  Position in this buffer of the first object that hasn't
+   //  been returned to the client.
+   uint32_t offset;
+   //  Holds statistics about line lengths of the form <length, count>
+   //  where length is the number of characters in a line (including
+   //  the newline), and count is the number of lines with
+   //  exactly that many characters. If there are no lines with
+   //  a particular length, then there is no entry for that length.
+   private TreeMap<Integer, Integer> numLinesWithLength;
+  ```
+  
+- Document variable: think `nouns`, not `verbs`
+
+  Focus on what the variable represents, not how it is manipulated
+
+  Example:
+
+  ```java
+   /* FOLLOWER VARIABLE: indicator variable that allows the Receiver and the 
+   * PeriodicTasks thread to communicate about whether a heartbeat has been
+   * received within the follower's election timeout window.
+   * Toggled to TRUE when a valid heartbeat is received.
+   * Toggled to FALSE when the election timeout window is reset.  */
+   private boolean receivedValidHeartbeat;
+  ```
+  
+  Better Version
+  
+  ```java
+   /* True means that a heartbeat has been received since the last time
+   * the election timer was reset. Used for communication between the
+   * Receiver and PeriodicTasks threads.  */
+   private boolean receivedValidHeartbeat;
+  ```
+  
+## Higher-level comments enhance intuition
+  
+Omit details and help reader to understand the overall intent and structure of the code. This approach is commonly used for comments inside methods, and for interface comments.
+  
+Examples
+
+```java
+ // If there is a LOADING readRpc using the same session
+ // as PKHash pointed to by assignPos, and the last PKHash
+ // in that readRPC is smaller than current assigning
+ // PKHash, then we put assigning PKHash into that readRPC.
+ int readActiveRpcId = RPC_ID_NOT_ASSIGNED;
+ for (int i = 0; i < NUM_READ_RPC; i++) {
+      if (session == readRpc[i].session
+                 && readRpc[i].status == LOADING
+                 && readRpc[i].maxPos < assignPos
+                 && readRpc[i].numHashes < MAX_PKHASHES_PERRPC) {
+          readActiveRpcId = i;
+          break;
+      }
+ }
+```
+
+- Too low-level and detailed
+- Partially repeat the code
+- does not explain the overall purpose of the code
+
+Better version:
+
+```java
+ // Try to append the current key hash onto an existing
+ // RPC to the desired server that hasn't been sent yet.
+```
+
+- No details But describes the code's overall function at higher level
+- With the high-level info, a reader can **explain almost everything** that happens in the code
+- provides a basis for readers to **judge the code**
+
+> But, great software designers can also step back from the details and think about a system at a higher level. This means deciding which aspects of the system are most important, and being able to ignore the low-level details and think about the system only in terms of its most fundamental characteristics. This is the essence of abstraction (finding a simple way to think about a complex entity), and it’s also what you must do when writing higher-level comments.
+
+## Interface documentation
+
+- **If you want code that presents good abstractions, you must document those abstractions with comments.**
+
+- **If interface comments must also describe the implementation, then the class or method is shalow.**
+
+
+
+
