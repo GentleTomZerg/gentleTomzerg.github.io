@@ -531,14 +531,16 @@ Key: **Reduce the number of places where exceptions must be handled**
 ## Why exceptions add complexity
 
 When exception occurs:
+
 - Approach 1: move forward and complete the work in progress in spite of the exception.
 
 - Approach 2: abort the operation in progress and report the exception upwards.
+
   - BUT: the exception handling code might need to restore consistency in distributed system
   - BUT: cascade of exceptions -> handle exceptions of exception handling code
 
 - Try catch boilerplate
-- Untested error handling code:  `“code	that	hasn’t	been	executed	doesn’t	work”`
+- Untested error handling code: `“code	that	hasn’t	been	executed	doesn’t	work”`
 
 ## Too many exceptions
 
@@ -548,19 +550,20 @@ When exception occurs:
 
 ## Solution1: Define errors out of existence
 
-Examples: 
+Examples:
+
 - Unset a non-exists variable
 
-  >  I	made	this	mistake	myself	in	the	design	of	the	Tcl	scripting	language.	Tcl contains	an	unset	command	that	can	be	used	to	remove	a	variable.	I	defined unset	so	that	it	throws	an	error	if	the	variable	doesn’t	exist.	At	the	time	I	thought that	it	must	be	a	bug	if	someone	tries	to	delete	a	variable	that	doesn’t	exist,	so	Tcl should	report	it.	However,	one	of	the	most	common	uses	of	unset	is	to	clean	up temporary	state	created	by	some	previous	operation.	It’s	often	hard	to	predict exactly	what	state	was	created,	particularly	if	the	operation	aborted	partway through.	Thus,	the	simplest	thing	is	to	delete	all	of	the	variables	that	might possibly	have	been	created.	The	definition	of	unset	makes	this	awkward: developers	end	up	enclosing	calls	to	unset	in	catch	statements	to	catch	and ignore	errors	thrown	by	unset.	In	retrospect,	the	definition	of	the	unset command	is	one	of	the	biggest	mistakes	I	made	in	the	design	of	Tcl.
+  > I made this mistake myself in the design of the Tcl scripting language. Tcl contains an unset command that can be used to remove a variable. I defined unset so that it throws an error if the variable doesn’t exist. At the time I thought that it must be a bug if someone tries to delete a variable that doesn’t exist, so Tcl should report it. However, one of the most common uses of unset is to clean up temporary state created by some previous operation. It’s often hard to predict exactly what state was created, particularly if the operation aborted partway through. Thus, the simplest thing is to delete all of the variables that might possibly have been created. The definition of unset makes this awkward: developers end up enclosing calls to unset in catch statements to catch and ignore errors thrown by unset. In retrospect, the definition of the unset command is one of the biggest mistakes I made in the design of Tcl.
 
 - Java substring
 
-  > if	either	index	is	outside	the	range	of	the	string,	then substring	throws	IndexOutOfBoundsException.	This	exception	is	unnecessary and	complicates	the	use	of	this	method. The	Java	substring	method	would	be	easier	to	use	if	it	performed	this adjustment	automatically,	so	that	it	implemented	the	following	API:	“returns	the characters	of	the	string	(if	any)	with	index	greater	than	or	equal	to	beginIndex and	less	than	endIndex.”	This	is	a	simple	and	natural	API,	and	it	defines	the IndexOutOfBoundsException	exception	out	of	existence.	
+  > if either index is outside the range of the string, then substring throws IndexOutOfBoundsException. This exception is unnecessary and complicates the use of this method. The Java substring method would be easier to use if it performed this adjustment automatically, so that it implemented the following API: “returns the characters of the string (if any) with index greater than or equal to beginIndex and less than endIndex.” This is a simple and natural API, and it defines the IndexOutOfBoundsException exception out of existence.
 
 - Argue: If errors are defined out of existence, won't that result in buggier software?
 
   BUT: error-ful approach may catch some bugs but increase complexity, which results in other bugs. Developers must write additional code to avoid or ignore the errors.
-  
+
 **The best way to reduce bugs is to make software simpler**
 
 ## Solution2: Mask exceptions
@@ -585,12 +588,12 @@ Design 1: catch the problem in each handle function
 Design 2: aggregate the catch clause to the higher dispatcher class
 ![exception_handling_design1](../assets/software-design.assets/exception_handle_design2.png)
 
-- Encapsulation and Information Hiding: 
+- Encapsulation and Information Hiding:
 
   - the top-level exception handler encapsulated knowledge about how to generate error response, but know nothing about specific errors
 
   - the `getParameter` encapsulates knowledge about how to extract a parameter from a URL, and it also knows how to describe extraction errors in a human readable form, but know nothing about the syntax of HTTP error response.
-  
+
 **NOTE**: Exception aggregation works best if an exception propagates several levels up the stack before it is handled; this allows more exceptions from more methods to be handled in the same place.
 
 ## Solution4: Just Crash?
@@ -614,7 +617,7 @@ Approach2: startIdx, endIdx -> startIdx == endIdx means a empty selection. No ne
 # Design it Twice
 
 Designing software is hard, so it’s unlikely that your first thoughts about how to structure a module or system will produce the best design. You’ll end up with a much better result if you consider multiple options for each major design decision: **design it twice**.
- 
+
 # Why Write Comments? The Four Excuses
 
 - Good code is self-documenting -> BUT: **If users must read the code of a method in order to use it, then there is no abstraction**
@@ -629,32 +632,34 @@ Designing software is hard, so it’s unlikely that your first thoughts about ho
 
 # Comments Should Describe Things that Aren't Obvious from the Code
 
-Developers should be able to understand the abstraction provided by a module without reading any code other than its externally visible declarations. 
+Developers should be able to understand the abstraction provided by a module without reading any code other than its externally visible declarations.
 
 ## Pick conventions
 
 - **Interface**: a `comment block` that immediately precedes the declaration of a
-module such as a class, data structure, function, or method. The comment
-describe’s the module’s interface. 
+  module such as a class, data structure, function, or method. The comment
+  describe’s the module’s interface.
 
-  - For a class, the comment describes the overall abstraction provided by the class. 
+  - For a class, the comment describes the overall abstraction provided by the class.
   - For a method or function, the comment describes its overall behavior, its arguments and return value, if any, any side effects or exceptions that it generates, and any other requirements the caller must satisfy before invoking the method.
 
 - **Data structure member**: a comment `next to the declaration of a field` in a data
-structure, such as an instance variable or static variable for a class.
+  structure, such as an instance variable or static variable for a class.
 
 - **Implementation comment**: a comment `inside` the code of a method or
-function, which describes how the code works internally.
+  function, which describes how the code works internally.
 
 - **Cross-module comment**: a comment describing dependencies that cross
-module boundaries.
+  module boundaries.
 
 ## Don't repeat the code
+
 - Mistake 1:
 
   After write a comment, ask yourself: **could someone who has never seen the code write the comment just by looking at the code next to the comment** -> If YES: the comments are worthless
 
   Example:
+
   ```java
   //Add a horizontal scroll	bar
   hScrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
@@ -671,8 +676,9 @@ module boundaries.
 - Mistake 2:
 
   Use the same words in the comments that appear in the name of the entity being documented
-  
+
   Example:
+
   ```java
   /*
    * Obtain a normalized resource name from REQ.
@@ -688,10 +694,11 @@ module boundaries.
    */
    private static final int textHorizontalPadding = 4;
   ```
-  
+
   :star: **Use different words in the comments form those in the name of the entity being described**
-  
+
   Example:
+
   ```java
    /*
    * The amount of blank space to leave on the left and
@@ -699,6 +706,7 @@ module boundaries.
    */
    private static final int textHorizontalPadding = 4;
   ```
+
 ## :triangular_flag_on_post:Comment Repeats Code:triangular_flag_on_post:
 
 > If the information in a comment is already obvious from the code next to the comment, then the comment isn’t helpful. One example of this is when the comment uses the same words that make up the name of the thing it is describing
